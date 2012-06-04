@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"> 
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/name_row"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="24dp"
+    android:padding="6dp" />
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/owner_row"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="16dp"
+    android:padding="6dp" />
+<Button android:id="@+id/delete_btn"
+        android:text="Delete"
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"/>
+<Button android:id="@+id/run_btn"
+        android:text="Run"
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"/>
+<ImageButton android:layout_height="fill_parent"
+            android:id="@+id/favourite_btn"
+            android:textColor="#FFF" android:src="@drawable/button_states"
+            android:background="@null"
+            android:scaleType="fitStart"
+            android:layout_width="wrap_content" />
+</LinearLayout>

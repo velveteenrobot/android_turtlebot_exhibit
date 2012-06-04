@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Script Interface</string>
+    <string name="spinner_label">Program Type: </string>
+    <string-array name="program_type">
+        <item>Python</item>
+        <item>PuppetScript?</item>
+    </string-array>
+</resources>

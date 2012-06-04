@@ -1,0 +1,16 @@
+<package>
+  <description brief="Script Interface">
+  	       TODO
+  </description>
+  <author>TODO</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ TODO</url>
+  <depend package="appmanandroid"/>
+  <depend package="std_msgs"/>
+  <depend package="trajectory_msgs"/>
+  <depend package="program_queue"/>
+  <export>
+    <rosjava-android-app target="android-9" />
+  </export>
+</package>
