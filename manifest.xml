@@ -1,5 +1,5 @@
 <package>
-  <description brief="Script Interface">
+  <description brief="Exhibit Activity">
   	       TODO
   </description>
   <author>TODO</author>
@@ -9,7 +9,8 @@
   <depend package="appmanandroid"/>
   <depend package="std_msgs"/>
   <depend package="trajectory_msgs"/>
-  <depend package="program_queue"/>
+  <depend package="program_queue" />
+  <depend package="turtlebot_exhibit"/>
   <export>
     <rosjava-android-app target="android-9" />
   </export>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Script Interface</string>
-    <string name="spinner_label">Program Type: </string>
-    <string-array name="program_type">
-        <item>Python</item>
-        <item>PuppetScript?</item>
-    </string-array>
+    <string name="instructions">Add an image. Then press on image to drag it. Drop it on the grid.</string>
+    <string name="hello">Add an image. Then drag it onto the grid.</string>
+    <string name="app_name">Drag to GridView</string>
+    <integer name="num_images">15</integer>
+    <integer name="num_columns">3</integer>
+    <string name="main_screen">MainScreen</string>
+    <string name="splash_screen">SplashScreen</string>
+    <string name="save">Save!</string>
 </resources>

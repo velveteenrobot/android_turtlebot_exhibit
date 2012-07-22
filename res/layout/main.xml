@@ -1,139 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tabHost"
+<ros.android.exhibit.DragLayer
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
+    android:id="@+id/drag_layer"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="5dp">
+
     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
                 android:gravity="right"
                 android:background="#ff404040"
                 android:id="@+id/top_bar" />
-        <TabWidget
-            android:id="@android:id/tabs"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-        <FrameLayout
-            android:id="@android:id/tabcontent"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="5dp" >
-          <LinearLayout
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/tab1"
-              android:orientation="vertical"
-              android:paddingTop="10px">
-            <RelativeLayout
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content">
-              <Button 
-                android:layout_width="wrap_content" 
-                android:layout_height="wrap_content" 
-                android:text="New Program"
-                android:onClick="newProgram"
-                android:id="@+id/new_btn" />
-              <Button 
-                android:layout_width="wrap_content" 
-                android:layout_height="wrap_content" 
-                android:text="Edit Existing Program"
-                android:onClick="editExistingProgram"
-                android:layout_toRightOf="@id/new_btn"
-                android:id="@+id/edit_btn" />
-              </RelativeLayout>
-              <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-              <TableRow>
-              <TextView
-                android:layout_width="wrap_content" 
-                android:layout_height="wrap_content" 
-                android:text="Name:"
-                android:id="@+id/name_label" />
-              <TextView
-                android:layout_width="wrap_content" 
-                android:layout_height="wrap_content" 
-                android:text="Program Type:" />
-              </TableRow>
-              <TableRow>
-              <EditText
-                android:layout_width="fill_parent" 
-                android:layout_height="fill_parent"
-                android:hint="Your Program Name" 
-                android:id="@+id/name_field" />
-              <Spinner 
-                android:id="@+id/spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:prompt="@string/spinner_label" />
-              </TableRow>
-            </TableLayout>
-            <RelativeLayout
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent">
-              <Button 
-                android:layout_width="wrap_content" 
-                android:layout_height="wrap_content"
-                android:text="Add to Queue"
-                android:onClick="addToQueue"
-                android:id="@+id/queue_btn" 
-                android:layout_alignParentBottom="true" />
-              <Button 
-                android:layout_width="wrap_content" 
-                android:layout_height="wrap_content" 
-                android:text="Save Program"
-                android:onClick="saveProgram"
-                android:layout_above="@id/queue_btn"
-                android:id="@+id/save_btn" />
-              <EditText
-                android:layout_width="fill_parent" 
-                android:layout_height="fill_parent"
-                android:layout_above="@id/save_btn"
-                android:id="@+id/program_field" />
-            </RelativeLayout>
-          </LinearLayout>
-          <LinearLayout
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/tab2"
-              android:orientation="vertical"
-              android:paddingTop="60px">
-           <RelativeLayout
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content">
-           <Button 
-                android:layout_width="wrap_content" 
-                android:layout_height="wrap_content" 
-                android:text="Clear Queue"
-                android:onClick="clearQueue"
-                android:id="@+id/clear_btn" />
-           <Button 
-                android:layout_width="wrap_content" 
-                android:layout_height="wrap_content" 
-                android:text="Refresh!"
-                android:layout_toRightOf="@id/clear_btn"
-                android:onClick="updateQueue"
-                android:id="@+id/refresh_btn" />
-           </RelativeLayout>
-           <ListView android:id="@+id/list"
-                android:layout_width="fill_parent"
-		android:layout_height="fill_parent"/>
-           </LinearLayout>
-           <LinearLayout
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:id="@+id/tab3"
-              android:orientation="vertical"
-              android:paddingTop="60px">
-           <ListView android:id="@+id/favourites_list"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"/>
-           </LinearLayout>
-    </FrameLayout>
-    </LinearLayout>
-</TabHost>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1.0"
+    >
+ <Button
+    android:id="@+id/button_save"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerInParent="true"
+    android:onClick="saveSend"
+    android:text="@string/save"
+    />
+    
+    
+ <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/image_grid_view"
+    android:layout_width="660dp"
+    android:layout_height="fill_parent"
+    android:columnWidth="130dp"
+    android:numColumns="auto_fit"
+    android:verticalSpacing="30dp"
+    android:horizontalSpacing="0dp"
+    android:stretchMode="columnWidth"
+    android:layout_gravity="center"
+    android:layout_toRightOf="@+id/bottom_part"
+    android:layout_below="@+id/button_save"
+/>
+    
+<LinearLayout
+   android:id="@+id/bottom_part"
+   android:orientation="vertical"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:weightSum="1.0"
+   android:layout_alignParentLeft="true"
+   android:padding="10dp"
+   >
+<Button
+    android:id="@+id/button_add_if_2ft"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
+    android:background="@drawable/puzzle_if_2ft"
+    android:onClick="onClickAddImage"/>
+
+<Button
+    android:id="@+id/button_add_if_8ft"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
+    android:background="@drawable/puzzle_if_8ft"
+    android:onClick="onClickAddImage"/>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/image_source_frame"
+    android:layout_weight="0.5"
+    android:layout_width="80dp"
+    android:layout_height="64dp">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+       />
+</FrameLayout>
+<ros.android.exhibit.DeleteZone
+    android:id="@+id/delete_zone_view"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:layout_gravity="center"
+    android:src="@drawable/delete_zone"/>
+</LinearLayout>
+
+<ScrollView
+    android:id="@+id/rightmost_part"
+   android:orientation="vertical"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:weightSum="1.0"
+   android:layout_alignParentRight="true">
+<LinearLayout
+    android:id="@+id/linearlayout"
+   android:orientation="vertical"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:weightSum="1.0"
+   >
+    <Button
+    android:id="@+id/button_add_then_cw"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
+    android:background="@drawable/puzzle_then_cw"
+    android:layout_centerHorizontal="true"
+    android:onClick="onClickAddImage"/>
+    
+    <Button
+    android:id="@+id/button_add_then_ccw"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
+    android:background="@drawable/puzzle_then_ccw"
+    android:layout_centerHorizontal="true"
+    android:onClick="onClickAddImage"/>
+    
+    <Button
+    android:id="@+id/button_add_then_forwards"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
+    android:background="@drawable/puzzle_then_forwards"
+    android:layout_centerHorizontal="true"
+    android:onClick="onClickAddImage"/>
+    
+    <Button
+    android:id="@+id/button_add_then_backwards"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
+    android:background="@drawable/puzzle_then_backwards"
+    android:layout_centerHorizontal="true"
+    android:onClick="onClickAddImage"/>
+    
+    <Button
+    android:id="@+id/button_add_then_cow"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
+    android:background="@drawable/puzzle_then_cow"
+    android:layout_centerHorizontal="true"
+    android:onClick="onClickAddImage"/>
+</LinearLayout>
+</ScrollView>
+</RelativeLayout>
+
+</ros.android.exhibit.DragLayer>

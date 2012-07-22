@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package ros.android.scriptinterface;
+package ros.android.exhibit;
 
 import org.ros.exception.RemoteException;
 import ros.android.activity.AppManager;
@@ -192,8 +192,8 @@ public class LoginActivity extends RosAppActivity {
           appServiceClient.call(appRequest, new ServiceResponseListener<Login.Response>() {
               @Override 
               public void onSuccess(Login.Response message) {
-                //Intent intent = getPackageManager().getLaunchIntentForPackage("org.ros.android.scriptinterface.ScriptInterface");
-                Intent intent = new Intent(LoginActivity.this, ScriptInterface.class);
+                //Intent intent = getPackageManager().getLaunchIntentForPackage("org.ros.android.exhibit.ExhibitActivity");
+                Intent intent = new Intent(LoginActivity.this, ExhibitActivity.class);
                 token = (long) message.token;
                 if (token != 0) {
                 intent.putExtra("username", username);
@@ -217,8 +217,8 @@ public class LoginActivity extends RosAppActivity {
         }
         if (token != 0) {
           Toast.makeText(LoginActivity.this, "Login!", Toast.LENGTH_LONG).show();
-          //Intent intent = getPackageManager().getLaunchIntentForPackage("org.ros.android.scriptinterface.ScriptInterface");
-          Intent intent = new Intent(LoginActivity.this, ScriptInterface.class);
+          //Intent intent = getPackageManager().getLaunchIntentForPackage("org.ros.android.exhibit.ExhibitActivity");
+          Intent intent = new Intent(LoginActivity.this, ExhibitActivity.class);
           intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
           startActivityForResult(intent, 0);
           finish();

@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="ros.android.scriptinterface" android:versionCode="1"
+	package="ros.android.exhibit" android:versionCode="1"
 	android:versionName="1.0">
 	<uses-sdk android:minSdkVersion="9" />
 
-	<application android:icon="@drawable/script" android:label="@string/app_name">
+	<application android:icon="@drawable/tb" android:label="@string/app_name">
 
-		<activity android:name=".ScriptInterface" android:label="@string/app_name"
+		<activity android:name=".ExhibitActivity" android:label="@string/app_name"
 			android:screenOrientation="nosensor" android:configChanges="orientation|keyboardHidden">
 			<intent-filter>
-				<action android:name="ros.android.scriptinterface.ScriptInterface" />
+				<action android:name="ros.android.exhibit.ExhibitActivity" />
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
-		</activity>
-                <activity android:name=".LoginActivity"
-                        android:label="@string/app_name">
                         <intent-filter>
                                 <action android:name="android.intent.action.MAIN" />
                                 <category android:name="android.intent.category.LAUNCHER" />
                         </intent-filter>
-                        <intent-filter>
-                                <action android:name="ros.android.scriptinterface.LoginActivity" />
-                                <category android:name="android.intent.category.DEFAULT" />
-                        </intent-filter>
-                </activity>
+		</activity>
 	</application>
 
 	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+        <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 </manifest>
