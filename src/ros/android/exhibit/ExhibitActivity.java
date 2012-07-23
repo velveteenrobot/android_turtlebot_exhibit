@@ -49,6 +49,7 @@ import java.lang.String;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -260,7 +261,7 @@ public void saveSend(View v)
   }  
 
   relPub.publish(msg);
-
+  Log.i("ExhibitActivity", "Publish");
 }
 
 public static int[] convertIntegers(List<Integer> integers)
@@ -324,11 +325,17 @@ public void onClickAddImage (View v)
 	{
           addNewImageToScreen (R.drawable.puzzle_if_2ft);
 	  mDragController.setRecentButton(6);
+        Button button = (Button) findViewById(R.id.button_add_if_2ft);
+        button.setBackgroundResource(R.drawable.puzzle_if_2ft_disable);
+        button.setEnabled(false);
         }
 	if (v.getId() == R.id.button_add_if_8ft)
 	{
         	addNewImageToScreen (R.drawable.puzzle_if_8ft);
 	          mDragController.setRecentButton(7);
+        Button button = (Button) findViewById(R.id.button_add_if_8ft);
+        button.setBackgroundResource(R.drawable.puzzle_if_8ft_disable);
+        button.setEnabled(false);
         }
 	
 }
@@ -375,6 +382,7 @@ public void onClickAddImage (View v)
     Toast.makeText (getApplicationContext(), 
                     getResources ().getString (R.string.instructions),
                     Toast.LENGTH_LONG).show ();
+
 }
 
 
@@ -497,7 +505,22 @@ public boolean onTouch(View v, MotionEvent ev)
        handledHere = startDrag (v);
     }
     if(action == MotionEvent.ACTION_UP){
-    	
+      ArrayList<Integer> puzzleArrangement = mDragController.getImagePositions();
+      if (!puzzleArrangement.contains(6))
+      {
+        Button button = (Button) findViewById(R.id.button_add_if_2ft);
+        button.setBackgroundResource(R.drawable.puzzle_if_2ft);
+        button.setEnabled(true);
+
+      }	
+      if (!puzzleArrangement.contains(7))
+      {
+        Button button = (Button) findViewById(R.id.button_add_if_8ft);
+        button.setBackgroundResource(R.drawable.puzzle_if_8ft);
+        button.setEnabled(true);
+
+      }
+
     }
     
     return handledHere;

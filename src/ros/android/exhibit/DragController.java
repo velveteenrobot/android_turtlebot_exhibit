@@ -116,6 +116,8 @@ public class DragController {
 
     private ArrayList<Integer> imagePositions = new ArrayList<Integer>(Arrays.asList(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1));
 
+    private ArrayList<String> speech = new ArrayList<String>();
+
     private int draggingFrom = -1;
 
     private int draggedTo = -1;
@@ -491,9 +493,17 @@ public class DragController {
         if (dropTarget != null) {
             dropTarget.onDragExit(mDragSource, coordinates[0], coordinates[1],
                     (int) mTouchOffsetX, (int) mTouchOffsetY, mDragView, mDragInfo);
-            //boolean dragAllowed = isDragAllowed();
+            boolean dragAllowed = isDragAllowed();
+            /*if (dragAllowed)
+            {
+              Log.i("DragController", "drag allowed:");
+            }
+            else
+            {
+            Log.i("DragController", "drag not allowed");
+            }*/
             if (dropTarget.acceptDrop(mDragSource, coordinates[0], coordinates[1],
-                    (int) mTouchOffsetX, (int) mTouchOffsetY, mDragView, mDragInfo)) {
+                    (int) mTouchOffsetX, (int) mTouchOffsetY, mDragView, mDragInfo) && dragAllowed) {
                 dropTarget.onDrop(mDragSource, coordinates[0], coordinates[1],
                         (int) mTouchOffsetX, (int) mTouchOffsetY, mDragView, mDragInfo);
                 mDragSource.onDropCompleted((View) dropTarget, true);
@@ -522,6 +532,45 @@ public class DragController {
                   if (draggedTo < numImages ) 
                   {
                     imagePositions.set(draggedTo, recentButton);
+                    //recentButton = -1;
+                    /*if (recentButton == 8)
+                    {
+                    LayoutInflater li = LayoutInflater.from(context);
+				View promptsView = li.inflate(R.layout.prompts, null);
+ 
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+						context);
+ 
+				// set prompts.xml to alertdialog builder
+				alertDialogBuilder.setView(promptsView);
+ 
+				final EditText userInput = (EditText) promptsView
+						.findViewById(R.id.editTextDialogUserInput);
+ 
+				// set dialog message
+				alertDialogBuilder
+					.setCancelable(false)
+					.setPositiveButton("OK",
+					  new DialogInterface.OnClickListener() {
+					    public void onClick(DialogInterface dialog,int id) {
+						// get user input and set it to result
+						// edit text
+						speech.add(userInput.getText());
+					    }
+					  })
+					.setNegativeButton("Cancel",
+					  new DialogInterface.OnClickListener() {
+					    public void onClick(DialogInterface dialog,int id) {
+						dialog.cancel();
+					    }
+					  });
+ 
+				// create alert dialog
+				AlertDialog alertDialog = alertDialogBuilder.create();
+ 
+				// show it
+				alertDialog.show();
+                    }*/
                     recentButton = -1;
                   }
                 }
@@ -530,7 +579,7 @@ public class DragController {
             } else {
                 mDragSource.onDropCompleted((View) dropTarget, false);
                 Log.i("DragController", "And I get called this many times.");
-                if (draggingFrom >= 0)
+                /*if (draggingFrom >= 0)
                 {
                   int puzzle = imagePositions.get(draggingFrom);
                   imagePositions.set(draggingFrom, -1);
@@ -541,7 +590,7 @@ public class DragController {
                 {
                   imagePositions.set(draggedTo, recentButton);
                   recentButton = -1;
-                }
+                }*/
                 
                 return true;
             }
@@ -571,11 +620,39 @@ public class DragController {
         return null;
     }
 
-    /*private boolean isDragAllowed() 
+    private boolean isDragAllowed() 
     {
-      
+     int currentPiece;
+
+     if (draggingFrom == -1)
+     {
+       currentPiece = recentButton;   
+     } 
+     else 
+     {
+       currentPiece = imagePositions.get(draggingFrom);
+       
+     }
+
+     int mod = (draggedTo + 5) % 5;
+     if (currentPiece > 5 && mod != 0) 
+     {
+
+       Log.i("DragController", "drag not allowed, current piece is: " + currentPiece);
+       return false;
+     }
+     else if (currentPiece <= 5 && mod == 0 && draggedTo != 15)
+     {
+       Log.i("DragController", "drag not allowed, current piece is: " + currentPiece);
+       return false;
+     }
+     else
+     {
+       Log.i("DragController", "drag allowed, current piece is: " + currentPiece);
+
+       return true;
+     }     
     }
-   */
 
     private int whichDropTarget(int x, int y, int[] dropCoordinates)
     {
